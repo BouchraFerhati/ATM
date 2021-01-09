@@ -1,0 +1,187 @@
+Perbaikan dan Penambahan dalam program.
+
+1. PERBAIKAN MENU TRANSFER AGAR PIHAK PENERIMA DAPAT MENERIMA UANG YANG DITRANSFER OLEH PENGIRIM.
+
+line 16-17
+	struct pen[5];
+	int j, pas;
+
+line 249-256 
+
+	for(j=0; j<n; j++){
+        	if(no==pen[j].no_rek){
+                	pas=i;
+                        ketemu=true;
+                }
+                else
+                	ketemu=false;
+	}
+
+line 263
+	nas[pas].saldo = nas[pas].saldo + nominal_tujuan;
+
+
+2. CETAK RESI MENU SETOR TUNAI
+
+line 4
+	#include <time.h>
+
+line 102-138
+	printf("\nApakah anda ingin mencetak resi(y/t)?");
+        scanf("%s", &b1);
+
+	if (b1=='y' || b1=='Y'){
+		time(&ambil_waktu);
+		FILE * fPointer;
+		fPointer = fopen ("setortunai.txt", "w");
+
+		fprintf (fPointer, "		  BANK INDONESIA        \n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "%s", ctime (&ambil_waktu));
+		fprintf (fPointer, "KCU JPU CRM-1\n");
+		fprintf (fPointer, "==============================================\n");
+
+		fprintf (fPointer, " %.lf\n", nas[pos].no_rek);
+		fprintf (fPointer, "\nDEPOSIT KE TABUNGAN   		    Rp.%d", setor);
+		fprintf (fPointer, "\nSALDO ANDA  		            Rp.%d", nas[pos].saldo);
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "		  BANK INDONESIA        \n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "Kunjungi www.bankindonesia.com untuk infomasi\n");
+		fprintf (fPointer, "            dan promo-promo menarik          \n");
+
+		fclose(fPointer);
+		printf("\nResi sudah tercetak!");
+		printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+		scanf("%d", &x);
+		system("clear");
+		goto menu;
+
+         }
+         else
+             system("clear");
+             goto menu;
+
+3. CETAK RESI MENU TARIK TUNAI
+
+line 171-201
+	printf("\nApakah anda ingin mencetak resi(y/t)?");
+	scanf("%s", &b1);
+
+	if (b1=='y' || b1=='Y'){
+		time(&ambil_waktu);
+		FILE * fPointer;
+		fPointer = fopen ("penarikan.txt", "w");
+
+		fprintf (fPointer, "		  BANK INDONESIA        \n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "%s", ctime (&ambil_waktu));
+		fprintf (fPointer, "KCU JPU CRM-1\n");
+		fprintf (fPointer, "==============================================\n");
+
+		fprintf (fPointer, " %.lf\n", nas[pos].no_rek);
+		fprintf (fPointer, "\nPenarikan Jumlah   		    Rp.%d", tarik);
+		fprintf (fPointer, "\nSALDO ANDA  		            Rp.%d", nas[pos].saldo);
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "		  BANK INDONESIA        \n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "\n");
+		fprintf (fPointer, "Kunjungi www.bankindonesia.com untuk infomasi\n");
+		fprintf (fPointer, "             dan promo-promo menarik         \n");
+
+		fclose(fPointer);
+		printf("\nResi sudah tercetak!");
+		printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+		scanf("%d", &x);
+		system("clear");
+		goto menu;
+
+	}
+
+3. CETAK RESI MENU TRANSFER KE BANK INDONESIA
+
+line 266-299 
+	printf("\nIngin Mencetak Resi? (y/t) :");
+        scanf("%s", &b1);
+							
+         if (b1=='y' || b1=='Y'){
+         	time(&ambil_waktu);
+                FILE * fPointer;
+                fPointer = fopen ("trfbankindo.txt", "w");
+
+                fprintf (fPointer, "		BANK INDONESIA        \n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "%s", ctime (&ambil_waktu));
+                fprintf (fPointer, "KCU JPU CRM-1\n");
+                fprintf (fPointer, "==============================================\n");
+                fprintf (fPointer, " %.lf\n", nas[pos].no_rek);
+                fprintf (fPointer, "\nNAMA PENGIRIM   		      %s", nas[pos].nama);
+                fprintf (fPointer, "\nREK.TUJUAN  		      %d", no_tujuan);
+                fprintf (fPointer, "\nNAMA PENERIMA                   %s", nas[pas].nama);
+                fprintf (fPointer, "\nJUMLAH                          Rp.%d", nominal_tujuan);
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "          SIMPAN RESI INI SEBAGAI\n");
+                fprintf (fPointer, "          BUKTI TRANSAKSI YANG SAH\n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "		BANK INDONESIA        \n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "Kunjungi www.bankindonesia.com untuk infomasi\n");
+                fprintf (fPointer, "            dan promo-promo menarik          \n");
+
+                fclose(fPointer);
+
+                printf("\nResi sudah tercetak!");
+                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+                scanf("%d", &x);
+                system("clear");
+                goto menu;
+	}
+
+4. CETAK RESI MENU TRANSFER BANK LAIN
+
+line 356-391
+	printf("\nIngin Mencetak Resi? (y/t) : ");
+        scanf("%s", &b1);
+
+	if (b1=='y' || b1=='Y'){
+        	time(&ambil_waktu);
+                FILE * fPointer;
+
+                fPointer = fopen ("trfbanklain.txt", "w");
+
+                fprintf (fPointer, "		BANK INDONESIA        \n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "%s", ctime (&ambil_waktu));
+                fprintf (fPointer, "KCU JPU CRM-1\n");
+                fprintf (fPointer, "==============================================\n");
+                fprintf (fPointer, " %.lf\n", nas[pos].no_rek);
+                fprintf (fPointer, "\nDARI BANK  		        BANK INDONESIA");
+                fprintf (fPointer, "\nNAMA PENGIRIM   		       %s", nas[pos].nama);
+                fprintf (fPointer, "\nREK.TUJUAN  		            %d", no_tujuan);
+                fprintf (fPointer, "\nJUMLAH                               Rp.%d", nominal_tujuan);
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "          SIMPAN RESI INI SEBAGAI\n");
+                fprintf (fPointer, "          BUKTI TRANSAKSI YANG SAH\n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "		BANK INDONESIA        \n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "\n");
+                fprintf (fPointer, "Kunjungi www.bankindonesia.com untuk infomasi\n");
+                fprintf (fPointer, "             promo-promo menarik             \n");
+
+                fclose(fPointer);
+                printf("\nResi sudah tercetak!");
+                printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
+                scanf("%d", &x);
+                system("clear");
+                goto menu;
+	}
+	
