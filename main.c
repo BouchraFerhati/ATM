@@ -313,7 +313,7 @@ int main()
 						system("clear");
                     				goto menu;
 
-			}	
+			}}	
 			switch(piltrf){
 				case 2:
 					printf("\n====================================");
@@ -452,7 +452,7 @@ int main()
                 printf("\nNAMA NASABAH        : %s" , nas[pos].nama);
                 printf("\nALAMAT NASABAH      : %s" , nas[pos].alamat);
                 printf("\nSALDO               : Rp. %d" , nas[pos]. saldo);
-		printf("\nTOTAL SALDO SETELAH BUNGA : Rp. %lf\n", (nas[i].saldo)+(nas[i].saldo*0.1));
+		printf("\nTOTAL SALDO SETELAH BUNGA : Rp. %.lf\n", (nas[i].saldo)+(nas[i].saldo*0.1));
 		printf("\nMasukkan Angka Sembarang Untuk Kembali Ke Menu : ");
                 scanf("%d", &x);
 		system("clear");
